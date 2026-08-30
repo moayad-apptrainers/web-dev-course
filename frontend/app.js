@@ -6,7 +6,7 @@
 //
 //  ONE setting: where your API is running. When you start the
 //  backend with `dotnet run`, it prints this address.
-const API_BASE = "http://localhost:5000/api/products";
+const API_BASE = "https://web-dev-course-production.up.railway.app/api/products";
 // ============================================================
 
 const grid     = document.querySelector("#product-grid");
