@@ -1,0 +1,36 @@
+### Session 19 — test the Products API directly
+### In VS Code, install the "REST Client" extension, then click "Send Request".
+### The app prints its URL on `dotnet run` (e.g. http://localhost:5000).
+### You normally use the web page (../frontend/index.html) as the client,
+### but these let you test the API on its own.
+
+@base = http://localhost:5000
+
+### 1) GET all products
+GET {{base}}/api/products
+
+### 2) GET one product by id
+GET {{base}}/api/products/1
+
+### 3) CREATE a new product -> 201
+POST {{base}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Headphones",
+  "price": 59.90,
+  "description": "Over-ear, noise cancelling."
+}
+
+### 4) UPDATE product 1 -> 204
+PUT {{base}}/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Blue Pen",
+  "price": 3.50,
+  "description": "A smooth blue ballpoint pen."
+}
+
+### 5) DELETE product 2 -> 204
+DELETE {{base}}/api/products/2

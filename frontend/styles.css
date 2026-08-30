@@ -1,0 +1,161 @@
+/* ============================================================
+   MyShop styles — Session 17
+   A clean, responsive look using Flexbox, Grid & media queries.
+   ============================================================ */
+
+:root {
+  --purple: #512BD4;
+  --purple-dark: #3B1E9E;
+  --ink: #1A1633;
+  --slate: #4A4763;
+  --line: #E7E4F2;
+  --bg: #F5F4FA;
+  --card: #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+/* ---------- Header + nav (Flexbox) ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  padding: 16px 32px;
+  box-shadow: 0 2px 10px rgba(26, 22, 51, 0.06);
+  position: sticky;
+  top: 0;
+}
+header h1 { color: var(--purple); font-size: 24px; }
+nav a {
+  color: var(--slate);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 22px;
+}
+nav a:hover { color: var(--purple); }
+
+/* ---------- Layout ---------- */
+main { max-width: 1000px; margin: 0 auto; padding: 32px; }
+section { margin-bottom: 44px; }
+h2 { font-size: 26px; margin-bottom: 6px; }
+section > p { color: var(--slate); margin-bottom: 18px; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, #2A1470, #512BD4 60%, #7C5CE0);
+  color: #fff;
+  border-radius: 16px;
+  padding: 44px 40px;
+}
+.hero h2 { font-size: 32px; }
+.hero p { color: #E0D7F7; max-width: 560px; }
+
+/* ---------- Product grid (CSS Grid) ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(81, 43, 212, 0.12);
+}
+.card h3 { font-size: 18px; margin-bottom: 6px; }
+.card .desc { color: var(--slate); font-size: 14px; margin-bottom: 12px; }
+.card .price { color: var(--purple-dark); font-weight: 700; font-size: 18px; }
+
+/* ---------- Form ---------- */
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 460px;
+}
+.form-row { margin-bottom: 14px; }
+label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 5px; }
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+}
+input:focus, textarea:focus { outline: 2px solid var(--purple); border-color: var(--purple); }
+button {
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: var(--purple-dark); }
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  color: var(--slate);
+  font-size: 14px;
+  padding: 28px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Responsive: stack the header on small screens ---------- */
+@media (max-width: 600px) {
+  header { flex-direction: column; gap: 10px; padding: 16px; }
+  nav a { margin: 0 10px; }
+  main { padding: 20px; }
+  .hero { padding: 30px 24px; }
+}
+
+/* ---------- Search toolbar (Session 18) ---------- */
+.toolbar { margin-bottom: 18px; }
+.toolbar #search {
+  max-width: 340px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 15px;
+}
+#status { color: var(--slate); font-size: 14px; }
+#status.status-error {
+  color: #C22B3E;
+  background: #FDECEE;
+  border: 1px solid #F3C2C8;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.card .price { margin-top: 4px; }
+
+/* ---------- Delete button on cards (Session 19) ---------- */
+.card { display: flex; flex-direction: column; }
+.btn-delete {
+  margin-top: 14px;
+  align-self: flex-start;
+  background: #fff;
+  color: #C22B3E;
+  border: 1px solid #F3C2C8;
+  padding: 7px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.btn-delete:hover { background: #FDECEE; }

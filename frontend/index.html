@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyShop — Session 19 (full-stack)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>MyShop</h1>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#add">Add</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" class="hero">
+      <h2>Product Manager</h2>
+      <p>This page talks to your C# Web API, which stores everything in a real
+         SQLite database. List products, add new ones, delete them — every change
+         is saved on the server. Start the backend first, then open this page.</p>
+    </section>
+
+    <section id="products">
+      <h2>Products</h2>
+      <p id="status"></p>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section id="add">
+      <h2>Add a Product</h2>
+      <form class="form-card" id="add-form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="e.g. Mouse">
+        </div>
+        <div class="form-row">
+          <label for="price">Price</label>
+          <input type="number" id="price" step="0.01" placeholder="e.g. 19.99">
+        </div>
+        <div class="form-row">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3" placeholder="Short description"></textarea>
+        </div>
+        <button type="submit">Add product</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MyShop — a full-stack app (C# API + HTML/CSS/JS front end).</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
