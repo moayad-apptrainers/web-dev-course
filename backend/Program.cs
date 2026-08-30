@@ -4,11 +4,24 @@ using Session19_Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// --- Hosting port ------------------------------------------------------
+// Locally we use the address in Properties/launchSettings.json (port 5000).
+// A host like Railway instead tells us which port to use through the PORT
+// environment variable, so listen on that whenever it is present.
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+// ----------------------------------------------------------------------
+
 builder.Services.AddControllers();
 
 // Register EF Core and point it at a SQLite database file (shop.db).
+// The host can override the location with a DB_PATH environment variable —
+// useful when the database should live on a mounted disk that survives
+// redeploys, since a container's own filesystem is wiped every deploy.
+var dbPath = Environment.GetEnvironmentVariable("DB_PATH") ?? "shop.db";
 builder.Services.AddDbContext<AppDbContext>(o =>
-    o.UseSqlite("Data Source=shop.db"));
+    o.UseSqlite($"Data Source={dbPath}"));
 
 // --- CORS -------------------------------------------------------------
 // The web page runs in the browser at a DIFFERENT address than this API
